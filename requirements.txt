@@ -1,0 +1,3 @@
+flexnlp: https://github.com/isi-vista/isi-flexnlp.git
+spacy: conda install -c conda-forge spacy
+python -m spacy download en

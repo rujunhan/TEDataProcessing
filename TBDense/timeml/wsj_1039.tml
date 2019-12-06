@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+
+<TimeML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+
+
+ WSJ891026-0017 
+ = 891026 
+ 891026-0017. 
+ Business Brief -- Amdahl Corp.:
+@  Computer Firm's Earnings
+@  Fell 37% in Third Quarter 
+ <TIMEX3 tid="t15" type="DATE" value="1989-10-26" temporalFunction="false" functionInDocument="CREATION_TIME">10/26/89</TIMEX3> 
+ WALL STREET JOURNAL (J) 
+ AMH 
+ EARNINGS (ERN)
+COMPUTERS AND INFORMATION TECHNOLOGY (CPR) 
+
+   Amdahl Corp., a maker of mainframe computers, <EVENT eid="e1" class="REPORTING">reported</EVENT> a sharp <EVENT eid="e16" class="OCCURRENCE">decline</EVENT> in net <EVENT eid="e31" class="OCCURRENCE">income</EVENT> for its <TIMEX3 tid="t17" type="DATE" value="1989-Q3" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t15">third quarter</TIMEX3>, <EVENT eid="e2" class="OCCURRENCE">citing</EVENT> <EVENT eid="e18" class="OCCURRENCE">pricecutting</EVENT> by competitors and adverse effects from a strong U.S. dollar. 
+
+   Net income <EVENT eid="e3" class="OCCURRENCE">fell</EVENT> 37% to <EVENT eid="e115" class="STATE">$32.9</EVENT> million, or 30 cents a share, from <EVENT eid="e116" class="STATE">$52.2</EVENT> million, or 48 cents a share, in <TIMEX3 tid="t21" type="DATE" value="1988-Q3" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t17">the year-ago period</TIMEX3>. 
+Revenue <EVENT eid="e4" class="OCCURRENCE">rose</EVENT> 15% to <EVENT eid="e117" class="STATE">$534.3</EVENT> million from <EVENT eid="e118" class="STATE">$464.7</EVENT> million. 
+
+   Amdahl's <EVENT eid="e5" class="OCCURRENCE">results</EVENT> were somewhat worse than <EVENT eid="e6" class="I_STATE">expected</EVENT>. 
+Jay Stevens, an analyst with Dean Witter Reynolds, <EVENT eid="e7" class="REPORTING">said</EVENT> he <EVENT eid="e8" class="I_STATE">expected</EVENT> the Sunnyvale, Calif., company to <EVENT eid="e10" class="OCCURRENCE">earn</EVENT> 35 cents a share for <TIMEX3 tid="t22" type="DATE" value="1989-Q3" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t17">the quarter</TIMEX3> and <EVENT eid="e11" class="REPORTING">said</EVENT> the firm's weaker <EVENT eid="e114" class="OCCURRENCE">profit</EVENT> was partly the <EVENT eid="e12" class="OCCURRENCE">result</EVENT> of <EVENT eid="e111" class="STATE">increased</EVENT> competition from International Business Machines Corp., Amdahl's principal competitor for mainframe sales. 
+
+
+
+
+
+<MAKEINSTANCE eventID="e2" eiid="ei124" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e6" eiid="ei133" tense="PAST" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e31" eiid="ei123" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e7" eiid="ei134" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e1" eiid="ei121" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e8" eiid="ei135" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e3" eiid="ei126" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e5" eiid="ei132" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e12" eiid="ei139" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e10" eiid="ei136" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e114" eiid="ei138" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e11" eiid="ei137" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e111" eiid="ei140" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e4" eiid="ei129" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e18" eiid="ei125" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e16" eiid="ei122" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e115" eiid="ei141" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+<MAKEINSTANCE eventID="e116" eiid="ei142" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+<MAKEINSTANCE eventID="e117" eiid="ei143" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+<MAKEINSTANCE eventID="e118" eiid="ei144" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+
+<TLINK lid="l20" relType="BEFORE" eventInstanceID="ei144" relatedToEventInstance="ei143"/>
+<TLINK lid="l19" relType="AFTER" eventInstanceID="ei143" relatedToEventInstance="ei144"/>
+<TLINK lid="l18" relType="DURING" eventInstanceID="ei129" relatedToTime="t21"/>
+<TLINK lid="l17" relType="DURING" eventInstanceID="ei126" relatedToTime="t21"/>
+<TLINK lid="l16" relType="AFTER" eventInstanceID="ei141" relatedToEventInstance="ei142"/>
+<TLINK lid="l15" relType="BEFORE" eventInstanceID="ei142" relatedToEventInstance="ei141"/>
+<TLINK lid="l1" relType="BEFORE" eventInstanceID="ei140" relatedToEventInstance="ei138"/>
+<TLINK lid="l2" relType="BEFORE" eventInstanceID="ei121" relatedToTime="t15"/>
+<TLINK lid="l3" relType="ENDS" eventInstanceID="ei123" relatedToTime="t17"/>
+<TLINK lid="l4" relType="AFTER" eventInstanceID="ei124" relatedToEventInstance="ei125"/>
+<TLINK lid="l5" relType="SIMULTANEOUS" eventInstanceID="ei124" relatedToEventInstance="ei121"/>
+
+
+
+
+
+<TLINK lid="l6" relType="INCLUDES" eventInstanceID="ei132" relatedToEventInstance="ei123"/>
+<TLINK lid="l7" relType="BEFORE" eventInstanceID="ei133" relatedToEventInstance="ei132"/>
+<TLINK lid="l8" relType="ENDS" eventInstanceID="ei136" relatedToTime="t22"/>
+<TLINK lid="l9" relType="SIMULTANEOUS" eventInstanceID="ei137" relatedToEventInstance="ei134"/>
+<TLINK lid="l10" relType="SIMULTANEOUS" eventInstanceID="ei139" relatedToEventInstance="ei138"/>
+
+<SLINK lid="l14" relType="EVIDENTIAL" eventInstanceID="ei137" subordinatedEventInstance="ei139"/>
+<SLINK lid="l11" relType="EVIDENTIAL" eventInstanceID="ei121" subordinatedEventInstance="ei122"/>
+<SLINK lid="l12" relType="EVIDENTIAL" eventInstanceID="ei134" subordinatedEventInstance="ei135"/>
+<SLINK lid="l13" relType="MODAL" eventInstanceID="ei135" subordinatedEventInstance="ei136"/>
+
+</TimeML>

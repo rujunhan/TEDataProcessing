@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+
+<TimeML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+
+
+ WSJ891027-0143 
+ = 891027 
+ 891027-0143. 
+ Dividend News:
+@  AEP Industries Inc. 
+ <TIMEX3 tid="t17" type="DATE" value="1989-10-27" temporalFunction="false" functionInDocument="CREATION_TIME">10/27/89</TIMEX3> 
+ WALL STREET JOURNAL (J) 
+ AEPI 
+ DIVIDENDS (DIV) 
+
+   AEP INDUSTRIES Inc. directors <EVENT eid="e1" class="I_ACTION">authorized</EVENT> a 3-for-2 <EVENT eid="e2" class="OCCURRENCE">split</EVENT> of the common, <EVENT eid="e12" class="STATE">payable</EVENT> <TIMEX3 tid="t18" type="DATE" value="1989-12-07" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t17">Dec. 7</TIMEX3> to stock of <EVENT eid="e3" class="STATE">record</EVENT> <TIMEX3 tid="t19" type="DATE" value="1989-11-22" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t17">Nov. 22</TIMEX3>. 
+The <EVENT eid="e4" class="OCCURRENCE">split</EVENT> was <EVENT eid="e5" class="I_STATE">aimed</EVENT> at <EVENT eid="e7" class="I_ACTION">boosting</EVENT> the stock's <EVENT eid="e13" class="STATE">liquidity</EVENT>, <EVENT eid="e8" class="REPORTING">said</EVENT> Brendan Barba, chairman of the Moonachie, N.J., maker of plastic film products. 
+<SIGNAL sid="s16">After</SIGNAL> the <EVENT eid="e9" class="OCCURRENCE">split</EVENT>, the company will <EVENT eid="e14" class="STATE">have</EVENT> more than 4.7 million shares outstanding. 
+In national over-the-counter <EVENT eid="e10" class="OCCURRENCE">trading</EVENT> <TIMEX3 tid="t20" type="DATE" value="1989-10-26" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t17">yesterday</TIMEX3>, AEP shares <EVENT eid="e11" class="OCCURRENCE">closed</EVENT> <EVENT eid="e15" class="STATE">at $21.25</EVENT>, down 50 cents. 
+
+
+
+
+
+<MAKEINSTANCE eventID="e1" eiid="ei95" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2" eiid="ei96" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e12" eiid="ei97" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e3" eiid="ei98" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e4" eiid="ei99" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e5" eiid="ei100" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e7" eiid="ei101" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e13" eiid="ei102" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e8" eiid="ei103" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e9" eiid="ei104" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e14" eiid="ei105" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e10" eiid="ei106" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e11" eiid="ei107" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e15" eiid="ei108" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+
+<TLINK lid="l18" relType="BEFORE" eventInstanceID="ei103" relatedToTime="t17"/>
+<TLINK lid="l1" relType="BEFORE" eventInstanceID="ei95" relatedToTime="t17"/>
+<TLINK lid="l2" relType="IDENTITY" eventInstanceID="ei96" relatedToEventInstance="ei99"/>
+<TLINK lid="l3" relType="IDENTITY" eventInstanceID="ei99" relatedToEventInstance="ei104"/>
+<TLINK lid="l4" relType="BEFORE" eventInstanceID="ei106" relatedToTime="t17"/>
+<TLINK lid="l5" relType="BEFORE" eventInstanceID="ei97" relatedToEventInstance="ei96"/>
+<TLINK lid="l6" relType="ENDED_BY" eventInstanceID="ei97" relatedToTime="t18"/>
+<TLINK lid="l7" relType="AFTER" eventInstanceID="ei98" relatedToEventInstance="ei96"/>
+<TLINK lid="l8" relType="ENDED_BY" eventInstanceID="ei98" relatedToTime="t19"/>
+<TLINK lid="l9" relType="IS_INCLUDED" eventInstanceID="ei99" relatedToEventInstance="ei100"/>
+<TLINK lid="l10" relType="SIMULTANEOUS" eventInstanceID="ei107" relatedToEventInstance="ei108"/>
+<TLINK lid="l11" relType="ENDED_BY" eventInstanceID="ei106" relatedToEventInstance="ei107"/>
+<TLINK lid="l12" relType="IS_INCLUDED" eventInstanceID="ei106" relatedToTime="t20"/>
+<TLINK lid="l13" relType="AFTER" eventInstanceID="ei105" relatedToEventInstance="ei104" signalID="s16"/>
+
+<SLINK lid="l14" relType="MODAL" eventInstanceID="ei95" subordinatedEventInstance="ei96"/>
+<SLINK lid="l15" relType="MODAL" eventInstanceID="ei100" subordinatedEventInstance="ei101"/>
+<SLINK lid="l16" relType="EVIDENTIAL" eventInstanceID="ei103" subordinatedEventInstance="ei100"/>
+<SLINK lid="l17" relType="FACTIVE" eventInstanceID="ei101" subordinatedEventInstance="ei102"/>
+
+</TimeML>

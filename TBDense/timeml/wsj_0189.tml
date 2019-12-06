@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+
+<TimeML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+
+
+ WSJ891102-0001 
+ = 891102 
+ 891102-0001. 
+ Ralston Profit
+@  Declined 47%
+@  In 4th Quarter
+@  ---
+@  By Richard Gibson
+@  Staff Reporter of The Wall Street Journal 
+ <TIMEX3 tid="t35" type="DATE" value="1989-11-02" temporalFunction="false" functionInDocument="PUBLICATION_TIME">11/02/89</TIMEX3> 
+ WALL STREET JOURNAL (J) 
+ RAL 
+ EARNINGS (ERN)
+FOOD PRODUCTS (FOD) 
+
+   Ralston Purina Co. <EVENT eid="e1" class="REPORTING">reported</EVENT> a 47% <EVENT eid="e1991" class="OCCURRENCE">decline</EVENT> in <TIMEX3 tid="t38" type="DURATION" value="1989-Q4" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">fourth-quarter</TIMEX3> <EVENT eid="e2018" class="OCCURRENCE">earnings</EVENT>, <EVENT eid="e2" class="I_STATE">reflecting</EVENT> restructuring <EVENT eid="e2033" class="OCCURRENCE">costs</EVENT> as well as a more difficult pet food market. 
+
+   The St. Louis company <EVENT eid="e3" class="OCCURRENCE">earned</EVENT> $45.2 million, or 65 cents a share, compared with $84.9 million, or $1.24 a share, <TIMEX3 tid="t39" type="DATE" value="1988-Q4" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t38">a year earlier</TIMEX3>. 
+<EVENT eid="e2044" class="OCCURRENCE">Sales</EVENT> <SIGNAL sid="s2049">in</SIGNAL> <TIMEX3 tid="t42" type="DATE" value="1989-Q4" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">the latest period</TIMEX3> were $1.76 billion, a 13% <EVENT eid="e1992" class="OCCURRENCE">increase</EVENT> from <TIMEX3 tid="t43" type="DATE" value="1988-Q4" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t42">last year</TIMEX3>'s $1.55 billion. 
+
+   <SIGNAL sid="s2066">For</SIGNAL> <TIMEX3 tid="t41" type="DATE" value="1989" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">the year</TIMEX3> <EVENT eid="e5" class="ASPECTUAL">ended</EVENT> <TIMEX3 tid="t40" type="DATE" value="1989-09-30" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">Sept. 30</TIMEX3>, Ralston <EVENT eid="e6" class="OCCURRENCE">earned</EVENT> $422.5 million, or $6.44 a share, up 8.9% from $387.8 million, or $5.63 a share. 
+<TIMEX3 tid="t50" type="DATE" value="1989" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">This year</TIMEX3>'s <EVENT eid="e1993" class="OCCURRENCE">results</EVENT> included a <EVENT eid="e1994" class="OCCURRENCE">gain</EVENT> of $70.2 million on the <EVENT eid="e8" class="OCCURRENCE">disposal</EVENT> of seafood operations. 
+<EVENT eid="e1995" class="OCCURRENCE">Sales</EVENT> <SIGNAL sid="s2085">for</SIGNAL> <TIMEX3 tid="t44" type="DATE" value="1989" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">the full year</TIMEX3> were $6.6 billion, up 13% from $5.8 billion. 
+
+   Ralston <EVENT eid="e10" class="REPORTING">said</EVENT> its restructuring <EVENT eid="e1999" class="OCCURRENCE">costs</EVENT> <EVENT eid="e11" class="OCCURRENCE">include</EVENT> the <EVENT eid="e1996" class="OCCURRENCE">phase-out</EVENT> of a battery facility in Greenville, N.C., the <TIMEX3 tid="t45" type="DATE" value="PAST_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">recent</TIMEX3> <EVENT eid="e1997" class="OCCURRENCE">closing</EVENT> of a Hostess cake bakery in Cincinnati and a <EVENT eid="e1998" class="OCCURRENCE">reduction</EVENT> in staff throughout the company. 
+The battery plant, which <EVENT eid="e13" class="OCCURRENCE">makes</EVENT> rechargeable nickel cadmium and carbon zinc products,  will  be <EVENT eid="e14" class="OCCURRENCE">closed</EVENT> over <TIMEX3 tid="t46" type="DATE" value="1990" mod="APPROX" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">the next year or so</TIMEX3>, a spokesman <EVENT eid="e2000" class="REPORTING">said</EVENT>. 
+
+   Ralston <EVENT eid="e15" class="I_STATE">attributed</EVENT> its <TIMEX3 tid="t47" type="DATE" value="1989-Q4" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">fourth-quarter</TIMEX3> <EVENT eid="e2001" class="OCCURRENCE">slump</EVENT> partly to higher <EVENT eid="e2003" class="OCCURRENCE">costs</EVENT> of ingredients in the pet food business as well as competitive <EVENT eid="e2002" class="OCCURRENCE">pressures</EVENT>, which <EVENT eid="e18" class="I_STATE">required</EVENT> higher advertising <EVENT eid="e2004" class="OCCURRENCE">spending</EVENT>. 
+<SIGNAL sid="s2159">For</SIGNAL> <TIMEX3 tid="t48" type="DATE" value="1989" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">the year</TIMEX3>, pet food volume was <EVENT eid="e2154" class="STATE">flat</EVENT>, the company <EVENT eid="e19" class="REPORTING">said</EVENT>. 
+
+   Its cereal division <EVENT eid="e20" class="OCCURRENCE">realized</EVENT> higher operating <EVENT eid="e2005" class="OCCURRENCE">profit</EVENT> <SIGNAL sid="s2176">on</SIGNAL> volume <EVENT eid="e21" class="OCCURRENCE">increases</EVENT>, but also <EVENT eid="e2006" class="OCCURRENCE">spent</EVENT> more on <EVENT eid="e24" class="OCCURRENCE">promotion</EVENT>. 
+The Continental Baking business <EVENT eid="e26" class="OCCURRENCE">benefited</EVENT> from higher margins on bread and on <EVENT eid="e2007" class="STATE">increased</EVENT> cake <EVENT eid="e2008" class="OCCURRENCE">sales</EVENT>, it <EVENT eid="e30" class="REPORTING">added</EVENT>. 
+
+   Ralston <EVENT eid="e31" class="REPORTING">said</EVENT> its Eveready battery unit  was <EVENT eid="e32" class="OCCURRENCE">hurt</EVENT> by <EVENT eid="e33" class="ASPECTUAL">continuing</EVENT> economic <EVENT eid="e2009" class="OCCURRENCE">problems</EVENT> in South America. 
+
+   Ralston shares <EVENT eid="e34" class="OCCURRENCE">closed</EVENT> <TIMEX3 tid="t49" type="DATE" value="1989-11-01" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t35">yesterday</TIMEX3> at $80.50, off $1, in New York Stock Exchange composite trading. 
+
+
+
+
+<MAKEINSTANCE eventID="e1" eiid="ei2211" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e1991" eiid="ei2212" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2018" eiid="ei2213" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2" eiid="ei2214" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2033" eiid="ei2215" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e3" eiid="ei2216" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2044" eiid="ei2217" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e1992" eiid="ei2218" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e5" eiid="ei2219" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e6" eiid="ei2220" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e1993" eiid="ei2221" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e1994" eiid="ei2222" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e8" eiid="ei2223" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e1995" eiid="ei2224" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e10" eiid="ei2225" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e1999" eiid="ei2226" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e11" eiid="ei2227" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e1996" eiid="ei2228" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e1997" eiid="ei2229" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e1998" eiid="ei2230" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e13" eiid="ei2231" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e14" eiid="ei2232" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2000" eiid="ei2233" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e15" eiid="ei2234" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2001" eiid="ei2235" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2003" eiid="ei2236" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2002" eiid="ei2237" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e18" eiid="ei2238" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2004" eiid="ei2239" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2154" eiid="ei2240" tense="PAST" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e19" eiid="ei2241" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e20" eiid="ei2242" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2005" eiid="ei2243" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e21" eiid="ei2244" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e2006" eiid="ei2245" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e24" eiid="ei2246" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e26" eiid="ei2247" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e2007" eiid="ei2248" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e2008" eiid="ei2249" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e30" eiid="ei2250" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e31" eiid="ei2251" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e32" eiid="ei2252" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e33" eiid="ei2253" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e2009" eiid="ei2254" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e34" eiid="ei2255" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+
+<TLINK lid="l52" relType="IDENTITY" eventInstanceID="ei2251" relatedToEventInstance="ei2241"/>
+<TLINK lid="l51" relType="IS_INCLUDED" eventInstanceID="ei2254" relatedToEventInstance="ei2253"/>
+<TLINK lid="l50" relType="IAFTER" eventInstanceID="ei2250" relatedToEventInstance="ei2241"/>
+<TLINK lid="l49" relType="IDENTITY" eventInstanceID="ei2241" relatedToEventInstance="ei2233"/>
+<TLINK lid="l48" relType="SIMULTANEOUS" eventInstanceID="ei2234" relatedToEventInstance="ei2225"/>
+<TLINK lid="l1" relType="AFTER" eventInstanceID="ei2252" relatedToEventInstance="ei2253"/>
+<TLINK lid="l2" relType="SIMULTANEOUS" eventInstanceID="ei2238" relatedToEventInstance="ei2237"/>
+<TLINK lid="l3" relType="IAFTER" eventInstanceID="ei2224" relatedToTime="t44" signalID="s2085"/>
+<TLINK lid="l4" relType="SIMULTANEOUS" eventInstanceID="ei2248" relatedToEventInstance="ei2249"/>
+<TLINK lid="l5" relType="SIMULTANEOUS" eventInstanceID="ei2247" relatedToEventInstance="ei2248"/>
+<TLINK lid="l6" relType="BEFORE" eventInstanceID="ei2237" relatedToEventInstance="ei2235"/>
+<TLINK lid="l7" relType="SIMULTANEOUS" eventInstanceID="ei2245" relatedToEventInstance="ei2246"/>
+<TLINK lid="l8" relType="SIMULTANEOUS" eventInstanceID="ei2243" relatedToEventInstance="ei2244" signalID="s2176"/>
+<TLINK lid="l9" relType="BEFORE" eventInstanceID="ei2236" relatedToEventInstance="ei2235"/>
+<TLINK lid="l10" relType="INCLUDES" timeID="t47" relatedToEventInstance="ei2235"/>
+<TLINK lid="l11" relType="INCLUDES" eventInstanceID="ei2221" relatedToEventInstance="ei2222"/>
+<TLINK lid="l12" relType="SIMULTANEOUS" eventInstanceID="ei2242" relatedToEventInstance="ei2243"/>
+<TLINK lid="l13" relType="IS_INCLUDED" eventInstanceID="ei2255" relatedToTime="t49"/>
+<TLINK lid="l14" relType="DURING" eventInstanceID="ei2232" relatedToTime="t46"/>
+<TLINK lid="l15" relType="DURING" eventInstanceID="ei2231" relatedToTime="t35"/>
+<TLINK lid="l16" relType="IS_INCLUDED" eventInstanceID="ei2230" relatedToEventInstance="ei2226"/>
+<TLINK lid="l17" relType="IS_INCLUDED" eventInstanceID="ei2229" relatedToEventInstance="ei2226"/>
+<TLINK lid="l18" relType="IS_INCLUDED" timeID="t45" relatedToEventInstance="ei2229"/>
+<TLINK lid="l19" relType="IS_INCLUDED" eventInstanceID="ei2228" relatedToEventInstance="ei2226"/>
+<TLINK lid="l20" relType="SIMULTANEOUS" eventInstanceID="ei2239" relatedToEventInstance="ei2238"/>
+<TLINK lid="l21" relType="SIMULTANEOUS" eventInstanceID="ei2222" relatedToEventInstance="ei2223"/>
+<TLINK lid="l22" relType="SIMULTANEOUS" eventInstanceID="ei2226" relatedToEventInstance="ei2227"/>
+<TLINK lid="l23" relType="BEFORE" eventInstanceID="ei2211" relatedToTime="t35"/>
+<TLINK lid="l24" relType="IS_INCLUDED" eventInstanceID="ei2212" relatedToEventInstance="ei2213"/>
+<TLINK lid="l25" relType="IS_INCLUDED" eventInstanceID="ei2213" relatedToTime="t38"/>
+<TLINK lid="l26" relType="SIMULTANEOUS" eventInstanceID="ei2214" relatedToEventInstance="ei2212"/>
+<TLINK lid="l27" relType="BEFORE" eventInstanceID="ei2216" relatedToTime="t35"/>
+<TLINK lid="l28" relType="BEFORE" eventInstanceID="ei2225" relatedToTime="t35"/>
+<TLINK lid="l29" relType="IS_INCLUDED" eventInstanceID="ei2217" relatedToTime="t42" signalID="s2049"/>
+<TLINK lid="l30" relType="SIMULTANEOUS" eventInstanceID="ei2218" relatedToEventInstance="ei2217"/>
+<TLINK lid="l31" relType="ENDED_BY" timeID="t41" relatedToEventInstance="ei2219"/>
+<TLINK lid="l32" relType="SIMULTANEOUS" eventInstanceID="ei2219" relatedToTime="t40"/>
+<TLINK lid="l33" relType="IS_INCLUDED" eventInstanceID="ei2220" relatedToTime="t41" signalID="s2066"/>
+<TLINK lid="l34" relType="IAFTER" eventInstanceID="ei2240" relatedToTime="t48" signalID="s2159"/>
+<TLINK lid="l35" relType="INCLUDES" timeID="t50" relatedToEventInstance="ei2221"/>
+
+<SLINK lid="l46" relType="EVIDENTIAL" eventInstanceID="ei2251" subordinatedEventInstance="ei2252"/>
+<SLINK lid="l45" relType="MODAL" eventInstanceID="ei2234" subordinatedEventInstance="ei2237"/>
+<SLINK lid="l44" relType="MODAL" eventInstanceID="ei2234" subordinatedEventInstance="ei2236"/>
+<SLINK lid="l36" relType="FACTIVE" eventInstanceID="ei2234" subordinatedEventInstance="ei2235"/>
+<SLINK lid="l37" relType="EVIDENTIAL" eventInstanceID="ei2233" subordinatedEventInstance="ei2232"/>
+<SLINK lid="l38" relType="EVIDENTIAL" eventInstanceID="ei2211" subordinatedEventInstance="ei2212"/>
+<SLINK lid="l39" relType="FACTIVE" eventInstanceID="ei2214" subordinatedEventInstance="ei2215"/>
+<SLINK lid="l40" relType="EVIDENTIAL" eventInstanceID="ei2250" subordinatedEventInstance="ei2247"/>
+<SLINK lid="l41" relType="EVIDENTIAL" eventInstanceID="ei2225" subordinatedEventInstance="ei2227"/>
+<SLINK lid="l42" relType="EVIDENTIAL" eventInstanceID="ei2241" subordinatedEventInstance="ei2240"/>
+
+<ALINK lid="l43" relType="CONTINUES" eventInstanceID="ei2253" relatedToEventInstance="ei2254"/>
+
+</TimeML>

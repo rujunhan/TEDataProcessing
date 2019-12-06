@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+
+<TimeML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+
+
+ WSJ891102-0124 
+ = 891102 
+ 891102-0124. 
+ Dividend News:
+@  Goody Products Inc. 
+ <TIMEX3 tid="t8" type="DATE" value="1989-11-02" temporalFunction="false" functionInDocument="CREATION_TIME">11/02/89</TIMEX3> 
+ WALL STREET JOURNAL (J) 
+ GOOD 
+ DIVIDENDS (DIV) 
+
+   GOODY PRODUCTS Inc. <EVENT eid="e9" class="OCCURRENCE">cut</EVENT> its quarterly dividend to <EVENT eid="e33" class="STATE">five</EVENT> cents a share from <EVENT eid="e32" class="STATE">11.5</EVENT> cents a share. 
+The <EVENT eid="e10" class="OCCURRENCE">reduced</EVENT> dividend is <EVENT eid="e15" class="OCCURRENCE">payable</EVENT> <TIMEX3 tid="t18" type="DATE" value="1990-01-02" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t8">Jan. 2</TIMEX3> to stock of <EVENT eid="e2" class="STATE">record</EVENT> <TIMEX3 tid="t17" type="DATE" value="1989-12-15" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t8">Dec. 15</TIMEX3>. 
+The Kearny, N.J.-based maker of hair accessories and other cosmetic products <EVENT eid="e3" class="REPORTING">said</EVENT> it <EVENT eid="e4" class="OCCURRENCE">cut</EVENT> the dividend due to its <TIMEX3 tid="t26" type="TIME" value="1989-Q3" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t8">third-quarter</TIMEX3> <EVENT eid="e5" class="OCCURRENCE">loss</EVENT> of $992,000, or 15 cents a share. 
+In <TIMEX3 tid="t134" type="TIME" value="1988-Q3" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t8">the year-ago quarter</TIMEX3>, the company <EVENT eid="e6" class="REPORTING">reported</EVENT> net income of $1.9 million, or 29 cents a share. 
+The company also <EVENT eid="e7" class="I_ACTION">adopted</EVENT> an anti-<EVENT eid="e30" class="OCCURRENCE">takeover</EVENT> <EVENT eid="e31" class="OCCURRENCE">plan</EVENT>. 
+
+
+
+
+<MAKEINSTANCE eventID="e9" eiid="ei135" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e10" eiid="ei138" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e15" eiid="ei139" tense="PRESENT" aspect="NONE" polarity="POS" pos="ADJECTIVE"/>
+<MAKEINSTANCE eventID="e2" eiid="ei140" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e3" eiid="ei141" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e4" eiid="ei142" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e5" eiid="ei143" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e6" eiid="ei144" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e7" eiid="ei145" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
+<MAKEINSTANCE eventID="e30" eiid="ei146" tense="NONE" aspect="NONE" polarity="NEG" pos="NOUN"/>
+<MAKEINSTANCE eventID="e31" eiid="ei147" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
+<MAKEINSTANCE eventID="e32" eiid="ei148" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+<MAKEINSTANCE eventID="e33" eiid="ei149" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER"/>
+
+<TLINK lid="l20" relType="AFTER" eventInstanceID="ei146" relatedToEventInstance="ei147"/>
+<TLINK lid="l19" relType="BEFORE" eventInstanceID="ei144" relatedToTime="t8"/>
+<TLINK lid="l18" relType="IBEFORE" eventInstanceID="ei148" relatedToEventInstance="ei135"/>
+<TLINK lid="l17" relType="IAFTER" eventInstanceID="ei149" relatedToEventInstance="ei135"/>
+<TLINK lid="l1" relType="BEGINS" eventInstanceID="ei145" relatedToEventInstance="ei147"/>
+<TLINK lid="l2" relType="AFTER" timeID="t8" relatedToEventInstance="ei135"/>
+
+
+
+<TLINK lid="l3" relType="SIMULTANEOUS" eventInstanceID="ei138" relatedToEventInstance="ei139"/>
+<TLINK lid="l4" relType="IS_INCLUDED" eventInstanceID="ei139" relatedToTime="t18"/>
+<TLINK lid="l5" relType="BEFORE" eventInstanceID="ei140" relatedToEventInstance="ei139"/>
+<TLINK lid="l6" relType="IS_INCLUDED" eventInstanceID="ei140" relatedToTime="t17"/>
+<TLINK lid="l7" relType="AFTER" timeID="t18" relatedToTime="t8"/>
+<TLINK lid="l8" relType="AFTER" timeID="t18" relatedToTime="t17"/>
+<TLINK lid="l9" relType="BEFORE" eventInstanceID="ei141" relatedToTime="t8"/>
+<TLINK lid="l10" relType="IDENTITY" eventInstanceID="ei142" relatedToEventInstance="ei135"/>
+<TLINK lid="l11" relType="BEFORE" eventInstanceID="ei143" relatedToEventInstance="ei142"/>
+<TLINK lid="l12" relType="ENDS" eventInstanceID="ei143" relatedToTime="t26"/>
+<TLINK lid="l13" relType="BEFORE" eventInstanceID="ei145" relatedToTime="t8"/>
+
+<SLINK lid="l16" relType="FACTIVE" eventInstanceID="ei145" subordinatedEventInstance="ei147"/>
+<SLINK lid="l15" relType="EVIDENTIAL" eventInstanceID="ei141" subordinatedEventInstance="ei142"/>
+
+</TimeML>
