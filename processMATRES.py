@@ -10,10 +10,7 @@ from lxml import etree
 from pathlib import Path
 import re
 import json
-from flexnlp import Pipeline, Document
-from flexnlp.integrations.flexnlp import PlainTextIngester
-from flexnlp.integrations.spacy import SpacyAnnotator
-from flexnlp.utils.misc_utils import WithId
+from attr import attrs
 import pickle
 import random
 from collections import deque
@@ -92,7 +89,6 @@ class TBDDoc:
     raw_text: str = ""
     entities: Mapping[str, TBDEntity] = None
     relations: Mapping[str, TBDRelation] = None
-    nlp_ann: Optional[Document] = None
 
     def parse_entities(self, entities, all_text, event_fts={}):
 
@@ -207,17 +203,17 @@ class PackageReader:
 
         aq_samples = matres_pairs(dir_path, "aquaint")
 
-        suffix = ".tml"
-        src_to_id = {src:src.replace(suffix, "")[len(raw_dir)-1:] for src in src_docs}
-        src_to_id = {k: v for k,v in src_to_id.items() if v in aq_samples}
-        aq_files = src_to_id
+        # suffix = ".tml"
+        # src_to_id = {src:src.replace(suffix, "")[len(raw_dir)-1:] for src in src_docs}
+        # src_to_id = {k: v for k,v in src_to_id.items() if v in aq_samples}
+        # aq_files = src_to_id
         
-        self.train_files = {**tb_files, **aq_files}
+        self.train_files = {**tb_files}#, **aq_files}
                                                                                                    
-        tf_to_save = open('./matres_output/train_docs.txt', 'w')                                                  
-        for tf in self.train_files.values():                                                                                       
-            tf_to_save.write(tf)                                                                                                   
-            tf_to_save.write('\n')                                                                                                 
+        # tf_to_save = open('./matres_output/train_docs.txt', 'w')
+        # for tf in self.train_files.values():
+        #     tf_to_save.write(tf)
+        #     tf_to_save.write('\n')
 
         print("*" * 50)
         print("Processing Platinum -- Test")
@@ -245,40 +241,33 @@ class PackageReader:
             yield doc.parse(doc_id, Path(src_file), self.all_samples)
 
 
-class FlexNLPAnnotator:
+@attrs(auto_attribs=True, slots=True)
+class JsonSerializer:
+    types: Set[Type]
 
-    def __init__(self):
-        self.pipeline = (Pipeline.builder()
-                         .add(PlainTextIngester())
-                         .add(SpacyAnnotator.create_for_language(SpacyAnnotator.ENGLISH,
-                                                                 use_regions=False,
-                                                                 respect_existing_sentences=False))
-                         .build())
+    def __call__(self, obj):
+        if type(obj) is list:
+            return [self(x) for x in obj]
+        elif type(obj) is dict:
+            return {k: self(v) for k, v in obj.items()}
+        elif type(obj) in self.types:
+            return self(vars(obj))
+        return obj
 
-    def __call__(self, doc:TBDDoc):
-        return self.pipeline.process(WithId(doc.id, doc.raw_text))
+def export_json_lines(reader: PackageReader, out: TextIO,
+                      splits: Iterator[str] = ('test', 'train')):
 
-
-def flexnlp_annotate(reader: PackageReader, out_dir: Path,
-                     splits: Iterator[str] = ('test', 'train')):
-    """                                                                                                                             
-    Annotate docs using FlexNLP Pipeline                                                                                            
-    Args:                                                                                                                           
-        reader: reader to access                                                                                                    
-        out_dir: directory to store files                                                                                           
-        splits: data splits such as test, dev, train                                                                                
-                                                                                                                                    
-    Returns:                                                                                                                        
-                                                                                                                                    
-    """
-    annotate = FlexNLPAnnotator()
+    serializer = JsonSerializer({TBDEntity, TBDRelation, TBDDoc})
+    count = 0
     for split in splits:
         for doc in reader.read_split(split):
-            doc.nlp_ann = annotate(doc)
-            out_path = out_dir / split / f'{doc.id}.pkl'
-            out_path.parent.mkdir(parents=True, exist_ok=True)
-            with out_path.open('wb') as fh:
-                pickle.dump(doc, fh)
+            doc = vars(doc)
+            doc['split'] = split
+            line = json.dumps(doc, ensure_ascii=False, default=serializer)
+            out.write(line)
+            out.write('\n')
+            count += 1
+    log.info(f"wrote {count} docs")
 
 def matres_pairs(dir_path, filename):
     # tb_dense dataset only uses a subset of time bank dataset: 36 / 183                                
@@ -324,8 +313,8 @@ if __name__ == '__main__':
     
     args = p.parse_args()
     
-    args.task = 'flexnlp'
-    args.dir = Path('./raw_data/TE3/')
+    args.task = 'json'
+    args.dir = Path('./TE3/')
     args.out = Path('./matres_output/')
     print(args)
 
@@ -335,7 +324,4 @@ if __name__ == '__main__':
         assert not args.out.exists() or args.out.is_file()
         with args.out.open('w', encoding='utf-8', errors='replace') as out:
             export_json_lines(pr, out)
-    elif args.task == 'flexnlp':
-        assert not args.out.exists() or args.out.is_dir()
-        flexnlp_annotate(pr, args.out, splits = ["train",  "test"])
     

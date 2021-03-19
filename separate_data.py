@@ -1,12 +1,11 @@
 from pathlib import Path
 import pickle
 import argparse
-from flexnlp import Document
 from collections import defaultdict, Counter, OrderedDict
 from itertools import combinations
 from typing import Iterator, List, Mapping, Union, Optional, Set
 import random
-from read_data import FlatRelation, read_relations, matres_label_map, tbd_label_map
+from load_data import FlatRelation, read_relations, matres_label_map, tbd_label_map
 from processTBD import TBDDoc, TBDRelation, TBDEntity
 from dataclasses import dataclass
 from featureFuncs import *
@@ -14,8 +13,8 @@ import multiprocessing as mp
 from functools import partial
 from sklearn.model_selection import KFold, ParameterGrid, train_test_split
 import logging as log
-from pytorch_pretrained_bert.modeling import BertModel, BertConfig, PreTrainedBertModel
-from pytorch_pretrained_bert.tokenization import BertTokenizer
+# from pytorch_pretrained_bert.modeling import BertModel, BertConfig, PreTrainedBertModel
+# from pytorch_pretrained_bert.tokenization import BertTokenizer
 from sklearn.utils import resample
 import os
 import torch
@@ -51,15 +50,14 @@ def main(args):
 
     train_out = {}
     for ex in train_data:
-        left_event = Event(ex.left.id, ex.left.type, ex.left.text, ex.left.tense,
-                           ex.left.polarity, (ex.left.span[0], ex.left.span[1]))
-        right_event = Event(ex.right.id, ex.right.type, ex.right.text, ex.right.tense,
-                           ex.right.polarity, (ex.right.span[0], ex.right.span[1]))
-
+        left_event = Event(ex.left['id'], ex.left['type'], ex.left['text'], ex.left['tense'],
+                           ex.left['polarity'], (ex.left['span'][0], ex.left['span'][1]))
+        right_event = Event(ex.right['id'], ex.right['type'], ex.right['text'], ex.right['tense'],
+                           ex.right['polarity'], (ex.right['span'][0], ex.right['span'][1]))
         train_out[ex.id] = {'rel_type': ex.rel_type,
                             'rev': ex.rev,
-                            'doc_dictionary':ex.doc.pos_dict,
-                            'event_labels': ex.doc.entity_labels,
+                            'doc_dictionary':ex.doc['pos_dict'],
+                            'event_labels': ex.doc['entity_labels'],
                             'left_event': left_event,
                             'right_event': right_event,
                             'doc_id': ex.doc_id}
@@ -74,14 +72,14 @@ def main(args):
         dev_data = list(read_relations(Path(data_dir), 'dev', **opt_args))
         dev_out = {}
         for ex in dev_data:
-            left_event = Event(ex.left.id, ex.left.type, ex.left.text, ex.left.tense,
-                                ex.left.polarity, (ex.left.span[0], ex.left.span[1]))
-            right_event = Event(ex.right.id, ex.right.type, ex.right.text, ex.right.tense,
-                                ex.right.polarity, (ex.right.span[0], ex.right.span[1]))
+            left_event = Event(ex.left['id'], ex.left['type'], ex.left['text'], ex.left['tense'],
+                               ex.left['polarity'], (ex.left['span'][0], ex.left['span'][1]))
+            right_event = Event(ex.right['id'], ex.right['type'], ex.right['text'], ex.right['tense'],
+                                ex.right['polarity'], (ex.right['span'][0], ex.right['span'][1]))
             dev_out[ex.id] = {'rel_type': ex.rel_type,
-                              'doc_dictionary':ex.doc.pos_dict,
+                              'doc_dictionary':ex.doc['pos_dict'],
                               'rev': ex.rev,
-                              'event_labels': ex.doc.entity_labels,
+                              'event_labels': ex.doc['entity_labels'],
                               'left_event': left_event,
                               'right_event': right_event,
                               'doc_id': ex.doc_id}
@@ -93,14 +91,14 @@ def main(args):
     test_data = list(read_relations(Path(data_dir), 'test', **opt_args))
     test_out = {}
     for ex in test_data:
-        left_event = Event(ex.left.id, ex.left.type, ex.left.text, ex.left.tense,
-                           ex.left.polarity, (ex.left.span[0], ex.left.span[1]))
-        right_event = Event(ex.right.id, ex.right.type, ex.right.text, ex.right.tense,
-                            ex.right.polarity, (ex.right.span[0], ex.right.span[1]))
+        left_event = Event(ex.left['id'], ex.left['type'], ex.left['text'], ex.left['tense'],
+                           ex.left['polarity'], (ex.left['span'][0], ex.left['span'][1]))
+        right_event = Event(ex.right['id'], ex.right['type'], ex.right['text'], ex.right['tense'],
+                            ex.right['polarity'], (ex.right['span'][0], ex.right['span'][1]))
         test_out[ex.id] = {'rel_type': ex.rel_type,
                            'rev': ex.rev,
-                           'doc_dictionary':ex.doc.pos_dict,
-                           'event_labels': ex.doc.entity_labels,
+                           'doc_dictionary':ex.doc['pos_dict'],
+                           'event_labels': ex.doc['entity_labels'],
                            'left_event': left_event,
                            'right_event': right_event,
                            'doc_id': ex.doc_id}
@@ -114,7 +112,7 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser()
     # arguments for data processing
     p.add_argument('-data_dir', type=str)
-    p.add_argument('-save_dir', type=str, default='./data')
+    p.add_argument('-save_dir', type=str, default='')
     p.add_argument('-nr', type=float, default=0.0, help='Negative sample rate.')
     p.add_argument('-include_types', type=set, default={'TLINK'})
     p.add_argument('-eval_list', type=list, default=[])
@@ -133,16 +131,13 @@ if __name__ == '__main__':
     p.add_argument('-n_fts', type=int, default=1)
     args = p.parse_args()
 
-    args.data_type = "tbd"
+    args.data_type = "matres"
 
     if args.data_type == "tbd":
         args.data_dir = "./tbd_output/"
-        args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
-        args.dev_docs = [x.strip() for x in open("%sdev_docs.txt" % args.data_dir, 'r')]
         args.save_dir += args.data_type
     elif args.data_type == "matres":
         args.data_dir = "./matres_output/"
-        args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
         args.save_dir += args.data_type
         
     main(args)

@@ -15,15 +15,13 @@ from typing import (List, Iterator, Tuple, Union, Dict, Mapping, Callable, Set, 
 import glob
 from lxml import etree
 import json
-from flexnlp import Pipeline, Document
-from flexnlp.integrations.flexnlp import PlainTextIngester
-from flexnlp.integrations.spacy import SpacyAnnotator
-from flexnlp.utils.misc_utils import WithId
 import pickle
 import random
 from collections import deque
 from collections import OrderedDict, Counter, defaultdict
 import re
+import nltk
+
 random_seed = 7
 sys.path.append(str(Path(__file__).parent.absolute()))
 from processTBD import TBDDoc, TBDRelation, TBDEntity
@@ -103,6 +101,23 @@ def print_flat_relation_stats(data_dir: Path):
         for n, v in sorted(stats.items(), reverse=True, key=lambda x: x[0]):
             print(f'{n}\t{v}')
 
+def spans(txt):
+    tokens = nltk.word_tokenize(txt)
+    offset = 0
+    for token, tag in nltk.pos_tag(tokens):
+        offset = txt.find(token, offset)
+        yield token, offset, offset + len(token), tag
+        offset += len(token)
+
+def find_token_index(passage):
+    tokens = spans(passage)
+    token2idx = {}
+    count = 0
+    for token, start, end, tag in tokens:
+        token2idx["[%s:%s)" % (start, end)] = (token, count, tag)
+        count += 1
+    return token2idx
+
 
 def read_relations(data_dir: Path,
                    split: Optional[str] = None,
@@ -138,61 +153,66 @@ def read_relations(data_dir: Path,
     pos_counter = 0
     neg_counter = 0
 
-    causal_counter = 1
+    causal_counter = 0
 
     file_count = 0
 
+    all_files = []
+    with open(data_dir) as infile:
+        for line in infile:
+            data = json.loads(line)
+            if data['split'] == split:
+                all_files.append(data)
+
     sent_dists = []
-    for file in split_dir.glob('**/*.pkl'):
+    for doc in all_files:
         file_count += 1
         print(file_count)
 
-        with file.open('rb') as fh:
-            doc = pickle.load(fh)
+        all_events = [k for k,v in doc['entities'].items() if v['type'] in ['EVENT']]#, 'TIMEX3']]
+        #all_timex = [v for _,v in doc['entities'].items() if v['type'] in ['TIMEX3']]
 
-        all_events = [k for k,v in doc.entities.items() if v.type in ['EVENT']]#, 'TIMEX3']]                              
+        pos_dict = find_token_index(doc['raw_text'])
+        doc['pos_dict'] = pos_dict
 
-        #all_timex = [v for _,v in doc.entities.items() if v.type in ['TIMEX3']]
-        pos_dict = create_pos_dict(doc.nlp_ann.pos_tags())
-        doc.pos_dict = pos_dict
-
+        #doc.pos_dict = pos_dict
         # create a entity label map: Span --> 0/1 indicator                                                               
-        entity_labels = OrderedDict([(k,0) for k,v in pos_dict.items()])
+        entity_labels = OrderedDict([(k, 0) for k,v in pos_dict.items()])
 
         pos_count = 0
         neg_count = 0
         pos_relations = set()   # remember to exclude these from randomly generated negatives                             
 
-        for rel_id, rel in doc.relations.items():
-            rel_type = rel.type
+        for rel_id, rel in doc['relations'].items():
+            rel_type = rel['type']
             other_type = ((include_types and rel_type not in include_types)
                           or (exclude_types and rel_type in exclude_types))
 
             if other_type:
                 rel_type = other_label
 
-            elif rel.type == 'ALINK' or rel.type == 'TLINK':
-                assert 'type' in rel.properties and len(rel.properties['type']) == 1
+            elif rel['type']== 'ALINK' or rel['type'] == 'TLINK':
+                assert 'type' in rel['properties'] and len(rel['properties']['type']) == 1
 
-                rel_type = rel.properties['type'][0]
+                rel_type = rel['properties']['type'][0]
                 rel_type = label_map[rel_type]
+
 
             # find the events associated with this relation                                                               
             events = [(n, v)
-                      for n, vs in rel.properties.items()
+                      for n, vs in rel['properties'].items()
                       for v in vs
-                      if isinstance(v, ent_type)]
-
+                      if isinstance(v, dict)]
 
             first_event_name, first_event = events[0]
-            if first_event.type == 'TIMEX3':
+            if first_event['type'] == 'TIMEX3':
                 continue
             # all the second relations should have same name                                                              
             assert len(set(x for x, y in events[1:])) == 1
             for second_event_name, second_event in events[1:]:
-                if second_event.type == 'TIMEX3':
+                if second_event['type'] == 'TIMEX3':
                     continue
-                all_keys, lidx_start, lidx_end, ridx_start, ridx_end = token_idx(first_event.span, second_event.span, pos_dict)
+                all_keys, lidx_start, lidx_end, ridx_start, ridx_end = token_idx(first_event['span'], second_event['span'], pos_dict)
 
                 in_seq = [pos_dict[x][0] for x in all_keys[lidx_start:ridx_end+1]]
 
@@ -232,16 +252,15 @@ def read_relations(data_dir: Path,
                     if backward_sample or rev_ind:
                         # simple take the symmetric label rather then _rev;                                               
                         # only use rev_ind as reverse indicator                                                           
-                        all_samples.append(("%s%s" % (sample_type, pos_counter), backward_sample, left, right, doc.id, rev_map[label]))# + "_rev"))                                                                                                
+                        all_samples.append(("%s%s" % (sample_type, pos_counter), backward_sample, left, right, doc['id'], rev_map[label]))# + "_rev"))
                         pos_relations.add((right.id, left.id))
                     else:
-                        all_samples.append(("%s%s" % (sample_type, pos_counter), backward_sample, left, right, doc.id, label))
-                        pos_relations.add((left.id, right.id))
+                        all_samples.append(("%s%s" % (sample_type, pos_counter), backward_sample, left, right, doc['id'], label))
+                        pos_relations.add((left['id'], right['id']))
                     pos_counter += 1
 
-
-        doc.entity_labels = entity_labels
-        doc_dict[doc.id] = doc
+        doc['entity_labels'] = entity_labels
+        doc_dict[doc['id']] = doc
 
         neg_sample_size = int(neg_rate * pos_count)
 
@@ -287,14 +306,15 @@ def read_relations(data_dir: Path,
     print("Total negative sample size is: %s" % neg_counter)
     print("Total causal sample size is: %s" % causal_counter)
 
-    with open("%s/%s_docs.txt" % (str(data_dir), split), 'w') as file:
-        for k in doc_dict.keys():
-            file.write(k)
-            file.write('\n')
-    file.close()
+    # with open("%s/%s_docs.txt" % (str(data_dir), split), 'w') as file:
+    #     for k in doc_dict.keys():
+    #         file.write(k)
+    #         file.write('\n')
+    # file.close()
 
     if shuffle_all:
         random.Random(random_seed).shuffle(all_samples)
+
     for s in all_samples:
         yield FlatRelation(s[4], s[0], s[1], s[2], s[3], doc_dict[s[4]], s[5])
 
@@ -317,13 +337,18 @@ def main(args):
 
     # buffering data in memory --> it could cause OOM
     train_data = list(read_relations(Path(data_dir), 'train', **opt_args))
-    dev_data = []
+    with open('%s/%s/train.pickle' % (args.save_data_dir, args.data_type), 'wb') as fh:
+        pickle.dump(train_data , fh)
 
     if args.data_type in ["tbd"]:
         opt_args['neg_rate'] = 0.0 # a random large number to include all                               
         dev_data = list(read_relations(Path(data_dir), 'dev', **opt_args))
+        with open('%s/%s/dev.pickle' % (args.save_data_dir, args.data_type), 'wb') as fh:
+            pickle.dump(dev_data, fh)
 
     test_data = list(read_relations(Path(data_dir), 'test', **opt_args))
+    with open('%s/%s/test.pickle' % (args.save_data_dir, args.data_type), 'wb') as fh:
+        pickle.dump(test_data, fh)
 
     if args.data_type == "matres":
         label_map = matres_label_map
@@ -344,6 +369,7 @@ if __name__ == '__main__':
     p.add_argument('-data_dir', type=str,
                    help='Path to directory having RED data. This should be output of '
                         '"ldcred.py flexnlp"')
+    p.add_argument('-save_data_dir', type=str, default="/Users/RJ/GitHub/EMNLP-2019/data_json/")
     p.add_argument('--tempo_filter', action='store_true',
                    help='Include Causal and Temporal relations only. By default all relations are'
                         ' included. When --filter is specified, non temporal and causal relations '
@@ -372,10 +398,10 @@ if __name__ == '__main__':
     args.data_type = "tbd"
     if args.data_type == "tbd":
         args.data_dir = "./tbd_output/"
-        args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
-        args.dev_docs = [x.strip() for x in open("%sdev_docs.txt" % args.data_dir, 'r')]
+        #args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
+        #args.dev_docs = [x.strip() for x in open("%sdev_docs.txt" % args.data_dir, 'r')]
     elif args.data_type == "matres":
         args.data_dir = "./matres_output/"
-        args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
+        #args.train_docs = [x.strip() for x in open("%strain_docs.txt" % args.data_dir, 'r')]
 
     main(args)

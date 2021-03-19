@@ -65,8 +65,12 @@ def token_idx(left, right, pos_dict):
     rkey_end = str(right[1])
 
     ridx_start = 0
-    while int(all_keys[ridx_start].split(':')[1][:-1]) <= right[0]:
-        ridx_start += 1
+    try:
+        while int(all_keys[ridx_start].split(':')[1][:-1]) <= right[0]:
+            ridx_start += 1
+    except:
+        print("Corrupted Cases...")
+        return all_keys, lidx_start, lidx_end, ridx_start-1, ridx_start-1
 
     ridx_end = ridx_start
     try:

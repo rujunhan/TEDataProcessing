@@ -1,4 +1,3 @@
-1. Contact Ryan Gabbard for access of flexnlp: https://github.com/isi-vista/isi-flexnlp.git
-2. install spacy and download "en"
-3. python processTBD.py
-4. python read_data.py
+1. python processMATRES.py 
+2. python processTBD.py
+3. python separate_data.py -save_dir {directory for Joint Model's input} -data_type {tbd / matres}
